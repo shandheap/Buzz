@@ -1,6 +1,8 @@
-<head> 
-	<title>Clique</title>
-</head> 
+<header class="navbar">
+	<div class="navbar-inner">
+		<a class="brand" href="{{postsListPath}}">Clique</a> 
+	</div>
+</header>
 <body>
 	<div class="container"> 
 		<header class="navbar">
@@ -9,7 +11,7 @@
 			</div>
 		</header>
 		<div id="main" class="row-fluid">
-			{{> postsList}}
+			{{renderPage}}
 		</div>
 	</div> 
 </body>
