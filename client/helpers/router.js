@@ -13,8 +13,10 @@ Meteor.Router.filters({
 	'requireLogin': function(page) {
 		if (Meteor.user())
 			return page;
-		else{
-			return 'accessDenied';}
+		else if (Meteor.loggingIn())
+			return 'loading';
+		else
+			return 'accessDenied';
 	}
 });
 
