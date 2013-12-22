@@ -3,7 +3,10 @@
 		<div class="navbar-inner">
 			<a class="brand" href="/">Clique</a>
 			<ul class="nav">
-				{{#if currentUser}}<li><a href="{{postSubmitPath}}">New</a></li>{{/if}}
+				{{#if currentUser}}<li><a href="{{postSubmitPath}}">Create Post</a></li>{{/if}}
+				<li class="dropdown">
+					{{> notifications}}
+				</li>
 			</ul>
 			<ul class="nav pull-right">
 				<li>{{loginButtons}}</li>

@@ -22,7 +22,12 @@ Meteor.methods({
 		});
 
 		Posts.update(comment.postId, {$inc: {commentsCount: 1}});
+		// Create the comment and save its id
+		comment._id = Comments.insert(comment);
 
-		return Comments.insert(comment);
+		// Create a notification for the owner of the post
+		createCommentNotification(comment);
+
+		return comment._id;
 	}
 });
