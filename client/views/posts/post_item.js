@@ -4,15 +4,27 @@ Template.postItem.helpers({
 	},
 
 	domain: function() {
-			var a = document.createElement('a'); 
-			a.href = this.url;
-			return a.hostname;
+		var a = document.createElement('a'); 
+		a.href = this.url;
+		return a.hostname;
+	},
+
+	upvotedClass: function() {
+		var userId = Meteor.userId();
+		if (userId && !_.include(this.upvoters, userId) && this.userId != userId) {
+			return "btn-primary upvoteable";
+		} else {
+			return "disabled";
+		}
 	}
 });
 
 Template.postItem.events({
-	'click .upvote': function(event) {
+	'click .upvoteable': function(event) {
 		event.preventDefault();
-		Meteor.call('upvote', this._id);
+		Meteor.call('upvote', this._id, function(error) {
+			if (error)
+				Meteor.Errors.throw(error.reason);
+		});
 	}
 });
