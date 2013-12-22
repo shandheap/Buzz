@@ -26,7 +26,9 @@ Meteor.methods({
 		comment._id = Comments.insert(comment);
 
 		// Create a notification for the owner of the post
-		createCommentNotification(comment);
+		// only if commenter is not owner
+		if (comment.author != post.author) 
+			createCommentNotification(comment);
 
 		return comment._id;
 	}
