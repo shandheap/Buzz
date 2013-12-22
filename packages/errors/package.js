@@ -7,3 +7,8 @@ Package.on_use(function (api, where) {
 
 	api.add_files(['errors.js', 'errors_list.html', 'errors_list.js'], 'client');
 });
+
+Package.on_test(function (api) {
+	api.use(['errors', 'tinytest', 'test-helpers'], 'client');
+	api.add_files('errors_test.js', 'client');
+});
