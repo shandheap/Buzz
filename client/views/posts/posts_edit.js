@@ -18,7 +18,8 @@ Template.postEdit.events({
 		Posts.update(currentPostId, {$set: postProperties}, function(error) {
 			if (error) {
 				// Display the error to the user
-				alert(error.reason);
+				error.reason = "Access denied: You are not the owner of this post"
+				Meteor.Errors.throw(error.reason);
 			} else {
 				Meteor.Router.to('postPage', currentPostId);
 			}
@@ -30,7 +31,13 @@ Template.postEdit.events({
 
 		if (confirm("Delete this post?")) {
 			var currentPostId = Session.get("currentPostId");
-			Posts.remove(currentPostId);
+			Posts.remove(currentPostId, function(error) {
+				if (error) {
+					// Display error to the user
+					error.reason = "Access denied: You are not the owner of this post"
+					Meteor.Errors.throw(error.reason);
+				}
+			});
 			Meteor.Router.to('postsList');
 		};
 	}
