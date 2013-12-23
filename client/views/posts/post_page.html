@@ -1,7 +1,7 @@
 <template name="postPage"> 
 	{{#with currentPost}}
 		{{> postItem}}
-
+		<hr />
 		<ul class="comments"> 
 			{{#each comments}}
 				{{> comment}}
@@ -10,6 +10,8 @@
 
 		{{#if currentUser}}
 			{{> commentSubmit}}
+		{{else}}
+			<div align="center" class="post">Login to comment on this post</div>
 		{{/if}}
 	{{/with}}
 </template>

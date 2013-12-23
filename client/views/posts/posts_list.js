@@ -28,6 +28,14 @@ Template.postsList.helpers({
 	allPostsLoaded: function() {
 		return this.handle.ready() && 
 			Posts.find().count() < this.handle.loaded();
+	},
+	postsWithRank: function() {
+		var i = 0, options = {sort: this.sort, limit: this.handle.limit()};
+		return Posts.find({}, options).map(function(post) {
+			post._rank = i;
+			i += 1;
+			return post;
+		});
 	}
 });
 

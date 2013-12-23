@@ -14,6 +14,12 @@ body {
 	-webkit-transition: all 300ms 0ms; -webkit-transition-delay: ease-in; -moz-transition: all 300ms 0ms ease-in; -o-transition: all 300ms 0ms ease-in; transition: all 300ms 0ms ease-in; position: relative;
 	opacity: 1;
 }
+
+.post{
+	position: relative;
+	transition: all 300ms 0ms ease-in;
+}
+
 .post:before, .post:after {
 	content: "";
 	display: table; }
