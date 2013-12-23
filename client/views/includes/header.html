@@ -13,10 +13,11 @@
 					<li class="{{activeRouteClass 'postSubmit'}}">
 						<a href="{{postSubmitPath}}">Create Post</a>
 					</li>
+				
+					<li class="dropdown">
+						{{> notifications}}
+					</li>
 				{{/if}}
-				<li class="dropdown">
-					{{> notifications}}
-				</li>
 			</ul>
 			<ul class="nav pull-right">
 				<li>{{loginButtons}}</li>
