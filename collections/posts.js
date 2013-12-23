@@ -53,21 +53,10 @@ Meteor.methods({
 		if (!user)
 			throw new Meteor.Error(401, "You need to login to upvote");
 
-		var post = Posts.findOne(postId);
-
-		// Ensure that the post exists
-		if (!post)
-			throw new Meteor.Error(422, "Post not found");
-
-		// Check if user is the author of the post
-		if (user.username == post.author)
-			throw new Meteor.Error(422, "You can't upvote your own post");
-
-		// Check if user has already upvoted the post
-		if (_.include(post.upvoters, user._id))
-			throw new Meteor.Error(422, "You've already upvoted this post");
-
-		Posts.update(post._id, {
+		Posts.update({
+			_id: postId,
+			upvoters: {$ne: user._id}
+		}, {
 			$addToSet: {upvoters: user._id},
 			$inc: {votes: 1}
 		});
