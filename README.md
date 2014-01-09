@@ -1,6 +1,6 @@
 #Buzz
 
-Buzz is a social news sharing website (similar to reddit) written in Meteor ( Node.js Framework )
+Buzz is an open source social news sharing website (similar to reddit) written in Meteor ( Node.js Framework )
 
 #Install Guide
 + Install [Meteor](https://www.meteor.com/)
